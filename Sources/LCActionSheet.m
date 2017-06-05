@@ -439,10 +439,10 @@
 }
 
 - (void)appendButtonsWithTitleArray:(NSArray<NSString *> *)titles {
-    self.otherButtonTitles = [self.otherButtonTitles arrayByAddingObjectsFromArray:titles];
     if (!self.otherButtonTitles) {
         self.otherButtonTitles = @[];
     }
+    self.otherButtonTitles = [self.otherButtonTitles arrayByAddingObjectsFromArray:titles];
     [self.tableView reloadData];
     [self updateBottomView];
     [self updateTableView];
