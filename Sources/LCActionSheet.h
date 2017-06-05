@@ -464,6 +464,14 @@ typedef void(^LCActionSheetDidDismissHandler)(LCActionSheet *actionSheet, NSInte
  */
 - (NSString *)buttonTitleAtIndex:(NSInteger)index;
 
+/**
+ Update button title with index
+ 
+ @param index index
+ @param  title title
+ */
+- (void)updateButtonTitle:(NSString *)title atIndex:(NSInteger)index;
+
 @end
 
 NS_ASSUME_NONNULL_END

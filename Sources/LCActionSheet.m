@@ -486,6 +486,26 @@
     [self updateBottomView];
     [self updateTableView];
 }
+
+- (void)updateButtonTitle:(NSString *)title atIndex:(NSInteger)index {
+#ifdef DEBUG
+    NSAssert(index <= self.otherButtonTitles.count, @"Index crossed");
+#endif
+    if (!self.otherButtonTitles) {
+        self.otherButtonTitles = @[];
+    }
+    if (self.otherButtonTitles.count == 0) {
+        self.otherButtonTitles = @[title];
+    } else {
+        NSMutableArray<NSString *> *arrayM = [NSMutableArray arrayWithArray:self.otherButtonTitles];
+        [arrayM replaceObjectAtIndex:index withObject:title];
+        self.otherButtonTitles = [NSArray arrayWithArray:arrayM];
+    }
+    
+    [self.tableView reloadData];
+    [self updateBottomView];
+    [self updateTableView];
+}
     
 - (void)handleDidChangeStatusBarOrientation {
     if (self.autoHideWhenDeviceRotated) {
