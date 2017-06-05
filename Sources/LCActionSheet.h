@@ -427,6 +427,14 @@ typedef void(^LCActionSheetDidDismissHandler)(LCActionSheet *actionSheet, NSInte
  */
 - (void)appendButtonsWithTitles:(nullable NSString *)titles, ... NS_REQUIRES_NIL_TERMINATION;
 
+
+/**
+ Append buttons with titlesArray.
+ 
+ @param titles titles
+ */
+- (void)appendButtonsWithTitleArray:(NSArray<NSString *> *)titles;
+
 /**
  Append button at index with title.
 

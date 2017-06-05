@@ -428,9 +428,21 @@
         }
         va_end(argumentList);
     }
-    
+    if (!self.otherButtonTitles) {
+        self.otherButtonTitles = @[];
+    }
     self.otherButtonTitles = [self.otherButtonTitles arrayByAddingObjectsFromArray:tempButtonTitles];
     
+    [self.tableView reloadData];
+    [self updateBottomView];
+    [self updateTableView];
+}
+
+- (void)appendButtonsWithTitleArray:(NSArray<NSString *> *)titles {
+    self.otherButtonTitles = [self.otherButtonTitles arrayByAddingObjectsFromArray:titles];
+    if (!self.otherButtonTitles) {
+        self.otherButtonTitles = @[];
+    }
     [self.tableView reloadData];
     [self updateBottomView];
     [self updateTableView];
