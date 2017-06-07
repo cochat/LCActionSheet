@@ -776,7 +776,7 @@
     UIWindow *window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     window.windowLevel = UIWindowLevelStatusBar;
     window.rootViewController = viewController;
-    [window makeKeyAndVisible];
+    window.hidden = NO;
     self.window = window;
     
     [viewController.view addSubview:self];
