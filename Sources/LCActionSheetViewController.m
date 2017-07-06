@@ -37,4 +37,8 @@
     return self.statusBarStyle;
 }
 
+- (BOOL)shouldAutorotate {
+    return NO;
+}
+
 @end
