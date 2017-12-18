@@ -201,6 +201,16 @@ typedef void(^LCActionSheetDidDismissHandler)(LCActionSheet *actionSheet, NSInte
 @property (nonatomic, strong) UIColor *separatorColor;
 
 /**
+ Blur view's background color. Default is `RGBA(255.0/255.0f, 255.0/255.0f, 255.0/255.0f, 0.5f)`.
+ */
+@property (nonatomic, strong) UIColor *blurBackgroundColor;
+
+/**
+ Title can be limit in numberOfTitleLines. Default is 0.
+ */
+@property (nonatomic, assign) NSInteger numberOfTitleLines;
+
+/**
  Auto hide when the device rotated. Default is NO, won't auto hide.
  */
 @property (nonatomic, assign) BOOL autoHideWhenDeviceRotated;
@@ -234,7 +244,7 @@ typedef void(^LCActionSheetDidDismissHandler)(LCActionSheet *actionSheet, NSInte
 
 /**
  Initialize an instance of LCActionSheet (Delegate).
-
+ 
  @param title             title
  @param delegate          delegate
  @param cancelButtonTitle cancelButtonTitle
@@ -249,7 +259,7 @@ typedef void(^LCActionSheetDidDismissHandler)(LCActionSheet *actionSheet, NSInte
 
 /**
  Initialize an instance of LCActionSheet with title array (Delegate).
-
+ 
  @param title                 title
  @param delegate              delegate
  @param cancelButtonTitle     cancelButtonTitle
@@ -264,7 +274,7 @@ typedef void(^LCActionSheetDidDismissHandler)(LCActionSheet *actionSheet, NSInte
 
 /**
  Initialize an instance of LCActionSheet (Delegate).
-
+ 
  @param title             title
  @param delegate          delegate
  @param cancelButtonTitle cancelButtonTitle
@@ -279,7 +289,7 @@ typedef void(^LCActionSheetDidDismissHandler)(LCActionSheet *actionSheet, NSInte
 
 /**
  Initialize an instance of LCActionSheet with title array (Delegate).
-
+ 
  @param title                 title
  @param delegate              delegate
  @param cancelButtonTitle     cancelButtonTitle
@@ -297,7 +307,7 @@ typedef void(^LCActionSheetDidDismissHandler)(LCActionSheet *actionSheet, NSInte
 
 /**
  Initialize an instance of LCActionSheet (Block).
-
+ 
  @param title             title
  @param cancelButtonTitle cancelButtonTitle
  @param clickedHandler    clickedHandler
@@ -312,7 +322,7 @@ typedef void(^LCActionSheetDidDismissHandler)(LCActionSheet *actionSheet, NSInte
 
 /**
  Initialize an instance of LCActionSheet with title array (Block).
-
+ 
  @param title                 title
  @param cancelButtonTitle     cancelButtonTitle
  @param clickedHandler        clickedHandler
@@ -327,7 +337,7 @@ typedef void(^LCActionSheetDidDismissHandler)(LCActionSheet *actionSheet, NSInte
 
 /**
  Initialize an instance of LCActionSheet (Block).
-
+ 
  @param title             title
  @param cancelButtonTitle cancelButtonTitle
  @param clickedHandler    clickedHandler
@@ -342,7 +352,7 @@ typedef void(^LCActionSheetDidDismissHandler)(LCActionSheet *actionSheet, NSInte
 
 /**
  Initialize an instance of LCActionSheet with title array (Block).
-
+ 
  @param title                 title
  @param cancelButtonTitle     cancelButtonTitle
  @param clickedHandler        clickedHandler
@@ -422,7 +432,7 @@ typedef void(^LCActionSheetDidDismissHandler)(LCActionSheet *actionSheet, NSInte
 
 /**
  Append buttons with titles.
-
+ 
  @param titles titles
  */
 - (void)appendButtonsWithTitles:(nullable NSString *)titles, ... NS_REQUIRES_NIL_TERMINATION;
@@ -437,7 +447,7 @@ typedef void(^LCActionSheetDidDismissHandler)(LCActionSheet *actionSheet, NSInte
 
 /**
  Append button at index with title.
-
+ 
  @param title title
  @param index index
  */
@@ -445,7 +455,7 @@ typedef void(^LCActionSheetDidDismissHandler)(LCActionSheet *actionSheet, NSInte
 
 /**
  Append buttons at indexSet with titles.
-
+ 
  @param titles  titles
  @param indexes indexes
  */
@@ -458,7 +468,7 @@ typedef void(^LCActionSheetDidDismissHandler)(LCActionSheet *actionSheet, NSInte
 
 /**
  Get button title with index
-
+ 
  @param index index
  @return button title
  */

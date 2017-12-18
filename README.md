@@ -82,11 +82,13 @@ In me the tiger sniffs the rose.
 
 ## 使用 Usage
 
-* 两种导入方法：
+* 三种导入方法：
 
   * 方法一：[CocoaPods](https://cocoapods.org/)：`pod 'LCActionSheet'`
+  
+  * 方法二：[Carthage](https://github.com/Carthage/Carthage) (iOS 8.0+)：`github "iTofu/LCActionSheet"`
 
-  * 方法二：直接把 LCActionSheet 文件夹（在 Demo 中）拖拽到你的项目中
+  * 方法三：直接把 LCActionSheet 文件夹（在 Demo 中）拖拽到你的项目中
 
 * 在相应位置导入头文件：`#import <LCActionSheet/LCActionSheet.h>`，（可选）遵守协议 `<LCActionSheetDelegate>`
 
@@ -137,6 +139,9 @@ In me the tiger sniffs the rose.
 
     // V 3.1.0+
     actionSheet.autoHideWhenDeviceRotated = YES;
+    
+    // V 3.2.4+
+    actionSheet.numberOfTitleLines = 2;
 
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
         // [actionSheet appendButtonWithTitle:@"WoW" atIndex:7];
@@ -291,6 +296,71 @@ In me the tiger sniffs the rose.
 
 
 ## 版本 ChangeLog
+
+### [V 3.4.0](https://github.com/iTofu/LCActionSheet/releases/tag/3.4.0) (2017.12.11)
+
+* 更新 Carthage 支持。Thanks [PR54](https://github.com/iTofu/LCActionSheet/pull/54) by [iOSleep](https://github.com/iOSleep)。
+
+
+### [V 3.3.3](https://github.com/iTofu/LCActionSheet/releases/tag/3.3.3) (2017.12.07)
+
+* 修复在 iOS 9 上的键盘窗口问题 —— [PR52](https://github.com/iTofu/LCActionSheet/pull/52) by [lhnoah](https://github.com/lhnoah)。
+
+
+### [V 3.3.2](https://github.com/iTofu/LCActionSheet/releases/tag/3.3.2) (2017.10.26)
+
+* 修复一个小问题 for iPhone Ⅹ —— [PR49](https://github.com/iTofu/LCActionSheet/pull/49) by [lhnoah](https://github.com/lhnoah)。
+
+
+### [V 3.3.1](https://github.com/iTofu/LCActionSheet/releases/tag/3.3.1) (2017.10.10)
+
+* 适配 iPhone Ⅹ。
+
+### [V 3.3.0](https://github.com/iTofu/LCActionSheet/releases/tag/3.3.0) (2017.09.25)
+
+* 新增属性 `numberOfTitleLines` 取代原来的 `titleLinesNumber`：
+
+  ```objc
+  @interface LCActionSheetConfig : NSObject
+
+  @property (nonatomic, assign) NSInteger titleLinesNumber;
+  // ->
+  @property (nonatomic, assign) NSInteger numberOfTitleLines;
+
+  @end
+
+
+  @interface LCActionSheet : NSObject
+
+  @property (nonatomic, assign) NSInteger titleLinesNumber;
+  // ->
+  @property (nonatomic, assign) NSInteger numberOfTitleLines;
+
+  @end
+  ```
+
+### [V 3.2.4](https://github.com/iTofu/LCActionSheet/releases/tag/3.2.4) (2017.06.29)
+
+* 添加属性来控制 title 的 numberOfLines，[#45](https://github.com/iTofu/LCActionSheet/pull/45) by [iOSleep](https://github.com/iOSleep)：
+
+  ```objc
+  @interface LCActionSheetConfig : NSObject
+
+  // Title can be limit in titleLinesNumber. Default is 0.
+  @property (nonatomic, assign) NSInteger titleLinesNumber;
+
+  @end
+
+
+  @interface LCActionSheet : UIView
+
+  // Title can be limit in titleLinesNumber. Default is 0.
+  @property (nonatomic, assign) NSInteger titleLinesNumber;
+
+  @end
+  ```
+
+* 增加 Carthage 支持，[#43](https://github.com/iTofu/LCActionSheet/pull/43) by [devjia](https://github.com/devjia)。
 
 
 ### [V 3.2.3](https://github.com/iTofu/LCActionSheet/releases/tag/3.2.3) (2017.06.05)

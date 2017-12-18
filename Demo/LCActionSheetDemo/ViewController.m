@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import <LCActionSheet/LCActionSheet.h>
+#import <LCActionSheet/UIDevice+LCActionSheet.h>
 #import <Masonry/Masonry.h>
 
 #define KEY_WINDOW  [UIApplication sharedApplication].keyWindow
@@ -51,7 +52,7 @@
     [textField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view).offset(10.0);
         make.right.equalTo(self.view).offset(-10.0);
-        make.top.equalTo(self.view).offset(30.0);
+        make.top.equalTo(self.view).offset(30.0 + ([[UIDevice currentDevice] lc_isX] ? 14.0 : 0));
         make.height.offset(44.0);
     }];
 }
@@ -108,7 +109,10 @@
     
     // V 3.1.0+
     actionSheet.autoHideWhenDeviceRotated = YES;
-    
+  
+    // V 3.2.4+
+    actionSheet.numberOfTitleLines = 2;
+  
     [actionSheet show];
 }
 
