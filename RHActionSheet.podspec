@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "RHActionSheet"
-  s.version      = "3.2.3.4"
+  s.version      = "3.2.5.1"
   s.summary      = "A simple, ornamental, but powerful action sheet! Support: https://LeoDev.me"
   s.homepage     = "https://github.com/cochat/LCActionSheet"
   s.license      = "MIT"
