@@ -839,6 +839,10 @@
     }];
 }
 
+- (void)hide {
+    [self hideWithButtonIndex:0];
+}
+
 - (void)hideWithButtonIndex:(NSInteger)buttonIndex {
     if ([self.delegate respondsToSelector:@selector(actionSheet:willDismissWithButtonIndex:)]) {
         [self.delegate actionSheet:self willDismissWithButtonIndex:buttonIndex];

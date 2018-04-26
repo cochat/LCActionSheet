@@ -499,6 +499,11 @@ typedef void(^LCActionSheetDidDismissHandler)(LCActionSheet *actionSheet, NSInte
 - (void)show;
 
 /**
+ Hide the instance of LCActionSheet.
+ */
+- (void)hide;
+
+/**
  Get button title with index
  
  @param index index
