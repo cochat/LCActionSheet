@@ -10,6 +10,7 @@
 #import <LCActionSheet/LCActionSheet.h>
 #import <LCActionSheet/UIDevice+LCActionSheet.h>
 #import <Masonry/Masonry.h>
+//#import <JGProgressHUD/JGProgressHUD.h>
 
 #define KEY_WINDOW  [UIApplication sharedApplication].keyWindow
 
@@ -68,15 +69,32 @@
 }
 
 - (IBAction)showDefaultActionSheet {
-    LCActionSheet *actionSheet = [LCActionSheet sheetWithTitle:@"Default LCActionSheet"
+    LCActionSheet *actionSheet = [LCActionSheet sheetWithTitle:@""
                                                       delegate:self
                                              cancelButtonTitle:@"Cancel"
-                                             otherButtonTitles:@"Button 1", @"Button 2", @"Button 3", nil];
+                                             otherButtonTitles:@"Button 1", nil];
+
+//    NSMutableIndexSet *indexSet = [[NSMutableIndexSet alloc] init];
+//    [indexSet addIndex:1];
+//    [indexSet addIndex:2];
+//    actionSheet.destructiveButtonIndexSet = indexSet;
+//    actionSheet.destructiveButtonColor    = [UIColor blueColor];
+//    actionSheet.destructiveButtonIndexSet = indexSet;
+//    [actionSheet setButtonHeight:64];
+//    [actionSheet setSeparatorColor:[UIColor clearColor]];
+//    [actionSheet setTintColor:UIColor.blackColor];
+//    [actionSheet setButtonColor:[UIColor whiteColor]];
+//    [actionSheet setButtonBgColor:[UIColor blackColor]];
+//    [actionSheet setDestructiveButtonColor:[UIColor blackColor]];
+//    [actionSheet setCancelButtonColor:[UIColor blackColor]];
+//
+//    [actionSheet setButtonFont:font];
+//    [actionSheet setButtonCornerRadius:3];
+
     [actionSheet show];
 }
 
 - (IBAction)showCustomActionSheet {
-    
     LCActionSheet *actionSheet     = [[LCActionSheet alloc] initWithTitle:nil
                                                                  delegate:self
                                                         cancelButtonTitle:@"Cancel"
@@ -151,7 +169,7 @@
     
     
     // Append buttons methods
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2.0f * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
 //        [actionSheet appendButtonWithTitle:@"WoW" atIndex:7];
         
         NSMutableIndexSet *set = [[NSMutableIndexSet alloc] init];
@@ -159,6 +177,42 @@
         [set addIndex:2];
         [actionSheet appendButtonsWithTitles:@[@"Hello", @"World"] atIndexes:set];
     });
+}
+
+- (IBAction)onChangeStyleAction {
+    UIFont *font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:16.0f];
+    
+    [LCActionSheetConfig.config setButtonHeight:64];
+    [LCActionSheetConfig.config setSeparatorColor:[UIColor clearColor]];
+    [LCActionSheetConfig.config setButtonColor:[UIColor whiteColor]];
+    [LCActionSheetConfig.config setButtonBgColor:[UIColor blackColor]];
+    [LCActionSheetConfig.config setButtonCornerRadius:3];
+    [LCActionSheetConfig.config setCancelButtonColor:[UIColor blackColor]];
+//    [LCActionSheetConfig.config setButtonEdgeInsets:UIEdgeInsetsMake(10, 20, 0, 20)];
+    [LCActionSheetConfig.config setButtonFont:font];
+    
+    UILabel *label = [[UILabel alloc] init];
+    label.backgroundColor = [UIColor lightGrayColor];
+    label.alpha = 0;
+    label.text = @"🤜🏻🤛🏻";
+    label.textAlignment = NSTextAlignmentCenter;
+    label.layer.cornerRadius = 8.0;
+    label.layer.masksToBounds = YES;
+    [self.view addSubview:label];
+    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(self.view);
+        make.size.mas_equalTo(CGSizeMake(150.0, 50.0));
+    }];
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        label.alpha = 1.0;
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.3 delay:2.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            label.alpha = 0;
+        } completion:^(BOOL finished) {
+            [label removeFromSuperview];
+        }];
+    }];
 }
 
 #pragma mark - LCActionSheet Delegate
