@@ -29,8 +29,14 @@
 @implementation UIDevice (LCActionSheet)
 
 - (BOOL)lc_isX {
-    CGSize screenSize = [UIScreen mainScreen].bounds.size;
-    return MAX(screenSize.width, screenSize.height) == 812.0;
+    BOOL isX = NO;
+    if (@available(iOS 11.0, *)) {
+        UIWindow *mainWindow = [[[UIApplication sharedApplication] delegate] window];
+        if (mainWindow.safeAreaInsets.bottom > 0.0) {
+            isX = YES;
+        }
+    }
+    return isX;
 }
 
 @end
